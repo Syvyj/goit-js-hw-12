@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixabay Image Search</title>
+    <script type="module" crossorigin src="/goit-js-hw-11/index.js"></script>
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-11/assets/vendor-hwdYKDic.js">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/vendor-CX4EDM7x.css">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/index-DTdEFsQD.css">
+  </head>
+  <body>
+    <header>
+      <h1>Image Search</h1>
+      <form id="search-form">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search images..."
+          required
+        />
+        <button type="submit">Search</button>
+      </form>
+    </header>
+
+    <main>
+      <div class="gallery">
+        <!-- Gallery items will be rendered here -->
+      </div>
+      <div class="loader">Loading...</div>
+      <button type="button" class="load-more" style="display: none">
+        Load more
+      </button>
+    </main>
+
+    <footer>
+      <p>
+        Created by
+        <a href="https://github.com/Syvyj" target="_blank">Oleksii Ziuzin</a>
+      </p>
+    </footer>
+
+  </body>
+</html>
