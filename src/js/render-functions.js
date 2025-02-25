@@ -1,11 +1,25 @@
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
+// Винесено створення lightbox у глобальний код
+let lightbox = new SimpleLightbox('.gallery .gallery-item a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
+
 export function renderImages(images, isNewSearch = true) {
   const gallery = document.querySelector(".gallery");
   
+  if (isNewSearch) {
+    // Перевіряємо чи існує lightbox і знищуємо його перед очищенням галереї
+    if (lightbox) {
+      lightbox.destroy();
+    }
+    gallery.innerHTML = '';
+  }
+  
   if (images.length === 0) {
-    gallery.innerHTML = '<p>No images found</p>';
+    gallery.innerHTML = '<p>No images found. Try another search.</p>';
     return;
   }
 
@@ -32,12 +46,12 @@ export function renderImages(images, isNewSearch = true) {
     gallery.insertAdjacentHTML('beforeend', markup);
   }
 
-  const lightbox = new SimpleLightbox('.gallery .gallery-item a', {
+  // Створюємо новий екземпляр або оновлюємо існуючий
+  lightbox = new SimpleLightbox('.gallery .gallery-item a', {
     captionsData: 'alt',
     captionDelay: 250,
   });
-  lightbox.refresh();
-
+  
   document.querySelector('main').classList.add('visible');
   document.querySelector('header').classList.add('searched');
 }

@@ -12,7 +12,10 @@ const loader = document.querySelector('.loader');
 document.getElementById("search-form").addEventListener("submit", async (event) => {
   event.preventDefault();
   currentPage = 1;
-  gallery.innerHTML = '';
+  
+  // Очищаємо галерею (тепер це буде оброблятися в renderImages з параметром isNewSearch=true)
+  // gallery.innerHTML = ''; 
+  
   loadMoreBtn.style.display = 'none';
   
   const query = document.getElementById("search-input").value.trim();
@@ -47,8 +50,8 @@ async function fetchAndRender(isNewSearch = true) {
 
     renderImages(data.hits, isNewSearch);
 
-    // Updated pagination check to use 50
-    if (currentPage * 50 >= data.totalHits) {
+    // Використовуємо значення PER_PAGE=40 з pixabay-api.js
+    if (currentPage * 40 >= data.totalHits) {
       loadMoreBtn.style.display = 'none';
       if (!isNewSearch) {
         iziToast.info({
